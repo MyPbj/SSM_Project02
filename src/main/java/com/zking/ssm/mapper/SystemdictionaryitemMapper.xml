@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.ssm.mapper.SystemdictionaryitemMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.ssm.model.Systemdictionaryitem" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="parentId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="title" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="tvalue" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sequence" jdbcType="TINYINT" javaType="java.lang.Byte" />
+      <arg column="intro" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, parentId, title, tvalue, sequence, intro
+  </sql>
+  <select id="querySystemdictionaryitemByPid" resultType="com.zking.ssm.model.Systemdictionaryitem">
+    SELECT <include refid="Base_Column_List"/> FROM systemdictionaryitem WHERE parentId=#{pid}
+  </select>
+
+</mapper>

@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.ssm.mapper.UserinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.ssm.model.Userinfo" >
+    <constructor >
+      <idArg column="id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="username" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="password" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="version" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="bitState" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="realName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="score" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="realAuthId" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="idNumber" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="phoneNumber" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="incomeGradeid" jdbcType="REAL" javaType="java.lang.Float" />
+      <arg column="marriageid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="kidCountid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="educationBackgroundid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="houseConditionid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="email" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="salt" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, username, password, version, bitState, realName, score, realAuthId, idNumber, 
+    phoneNumber, incomeGradeid, marriageid, kidCountid, educationBackgroundid, houseConditionid, 
+    email, salt
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from userinfo
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="login" resultType="com.zking.ssm.model.Userinfo">
+    SELECT <include refid="Base_Column_List"/> FROM userinfo WHERE username=#{username}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from userinfo
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zking.ssm.model.Userinfo" >
+    insert into userinfo (id, username, password,
+      version, bitState, realName,
+      score, realAuthId, idNumber,
+      phoneNumber, incomeGradeid, marriageid,
+      kidCountid, educationBackgroundid, houseConditionid,
+      email, salt)
+    values (#{id,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+      #{version,jdbcType=INTEGER}, #{bitstate,jdbcType=INTEGER}, #{realname,jdbcType=VARCHAR},
+      #{score,jdbcType=INTEGER}, #{realauthid,jdbcType=INTEGER}, #{idnumber,jdbcType=VARCHAR},
+      #{phonenumber,jdbcType=VARCHAR}, #{incomegradeid,jdbcType=REAL}, #{marriageid,jdbcType=INTEGER},
+      #{kidcountid,jdbcType=INTEGER}, #{educationbackgroundid,jdbcType=INTEGER}, #{houseconditionid,jdbcType=INTEGER},
+      #{email,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.ssm.model.Userinfo" >
+    insert into userinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="bitstate != null" >
+        bitState,
+      </if>
+      <if test="realname != null" >
+        realName,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="realauthid != null" >
+        realAuthId,
+      </if>
+      <if test="idnumber != null" >
+        idNumber,
+      </if>
+      <if test="phonenumber != null" >
+        phoneNumber,
+      </if>
+      <if test="incomegradeid != null" >
+        incomeGradeid,
+      </if>
+      <if test="marriageid != null" >
+        marriageid,
+      </if>
+      <if test="kidcountid != null" >
+        kidCountid,
+      </if>
+      <if test="educationbackgroundid != null" >
+        educationBackgroundid,
+      </if>
+      <if test="houseconditionid != null" >
+        houseConditionid,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="salt != null" >
+        salt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="bitstate != null" >
+        #{bitstate,jdbcType=INTEGER},
+      </if>
+      <if test="realname != null" >
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=INTEGER},
+      </if>
+      <if test="realauthid != null" >
+        #{realauthid,jdbcType=INTEGER},
+      </if>
+      <if test="idnumber != null" >
+        #{idnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null" >
+        #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="incomegradeid != null" >
+        #{incomegradeid,jdbcType=REAL},
+      </if>
+      <if test="marriageid != null" >
+        #{marriageid,jdbcType=INTEGER},
+      </if>
+      <if test="kidcountid != null" >
+        #{kidcountid,jdbcType=INTEGER},
+      </if>
+      <if test="educationbackgroundid != null" >
+        #{educationbackgroundid,jdbcType=INTEGER},
+      </if>
+      <if test="houseconditionid != null" >
+        #{houseconditionid,jdbcType=INTEGER},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+        #{salt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.ssm.model.Userinfo" >
+    update userinfo
+    <set >
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="bitstate != null" >
+        bitState = #{bitstate,jdbcType=INTEGER},
+      </if>
+      <if test="realname != null" >
+        realName = #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="realauthid != null" >
+        realAuthId = #{realauthid,jdbcType=INTEGER},
+      </if>
+      <if test="idnumber != null" >
+        idNumber = #{idnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null" >
+        phoneNumber = #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="incomegradeid != null" >
+        incomeGradeid = #{incomegradeid,jdbcType=REAL},
+      </if>
+      <if test="marriageid != null" >
+        marriageid = #{marriageid,jdbcType=INTEGER},
+      </if>
+      <if test="kidcountid != null" >
+        kidCountid = #{kidcountid,jdbcType=INTEGER},
+      </if>
+      <if test="educationbackgroundid != null" >
+        educationBackgroundid = #{educationbackgroundid,jdbcType=INTEGER},
+      </if>
+      <if test="houseconditionid != null" >
+        houseConditionid = #{houseconditionid,jdbcType=INTEGER},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null" >
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.ssm.model.Userinfo" >
+    update userinfo
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      version = #{version,jdbcType=INTEGER},
+      bitState = #{bitstate,jdbcType=INTEGER},
+      realName = #{realname,jdbcType=VARCHAR},
+      score = #{score,jdbcType=INTEGER},
+      realAuthId = #{realauthid,jdbcType=INTEGER},
+      idNumber = #{idnumber,jdbcType=VARCHAR},
+      phoneNumber = #{phonenumber,jdbcType=VARCHAR},
+      incomeGradeid = #{incomegradeid,jdbcType=REAL},
+      marriageid = #{marriageid,jdbcType=INTEGER},
+      kidCountid = #{kidcountid,jdbcType=INTEGER},
+      educationBackgroundid = #{educationbackgroundid,jdbcType=INTEGER},
+      houseConditionid = #{houseconditionid,jdbcType=INTEGER},
+      email = #{email,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

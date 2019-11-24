@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.ssm.mapper.ModuleInfoMapper" >
+  <cache
+          type="com.zking.ssm.redis.RedisCache"
+          eviction="LRU"
+          flushInterval="6000000"
+          size="1024"
+          readOnly="false"
+  />
+  <resultMap id="BaseResultMap" type="com.zking.ssm.model.ModuleInfo" >
+    <constructor >
+      <idArg column="id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pid" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="text" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="icon" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sort" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, pid, text, icon, url, sort
+  </sql>
+  <select id="queryByPid" useCache="true" resultType="com.zking.ssm.vo.ModuleInfoVo">
+    select <include refid="Base_Column_List"/> FROM  module_info where pid=#{id}
+  </select>
+  <select id="queryByRoot" useCache="true" resultType="com.zking.ssm.vo.ModuleInfoVo">
+    select <include refid="Base_Column_List"/>from module_info where pid=-1
+  </select>
+</mapper>

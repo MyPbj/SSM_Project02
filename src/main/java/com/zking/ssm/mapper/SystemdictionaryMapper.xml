@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.ssm.mapper.SystemdictionaryMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.ssm.model.Systemdictionary" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="sn" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="title" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="intro" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, sn, title, intro
+  </sql>
+  <select id="querySystemdictionaryAll" resultType="com.zking.ssm.vo.SystemdictionaryVo">
+    SELECT <include refid="Base_Column_List"/> FROM systemdictionary
+  </select>
+
+</mapper>

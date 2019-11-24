@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.ssm.mapper.AccountMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.ssm.model.Account" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="logininfoid" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="tradePassword" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="usableAmount" jdbcType="REAL" javaType="java.lang.Float" />
+      <arg column="freezedAmount" jdbcType="REAL" javaType="java.lang.Float" />
+      <arg column="version" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="unReceiveInterest" jdbcType="REAL" javaType="java.lang.Float" />
+      <arg column="unReceivePrincipal" jdbcType="REAL" javaType="java.lang.Float" />
+      <arg column="unReturnAmount" jdbcType="REAL" javaType="java.lang.Float" />
+      <arg column="remainBorrowLimit" jdbcType="REAL" javaType="java.lang.Float" />
+      <arg column="borrowLimit" jdbcType="REAL" javaType="java.lang.Float" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, logininfoid, tradePassword, usableAmount, freezedAmount, version, unReceiveInterest, 
+    unReceivePrincipal, unReturnAmount, remainBorrowLimit, borrowLimit
+  </sql>
+
+    <select id="querySingleAccount" resultType="com.zking.ssm.model.Account">
+      SELECT <include refid="Base_Column_List"/> FROM account WHERE  logininfoid=#{logininfoid}
+    </select>
+
+
+
+
+
+</mapper>
