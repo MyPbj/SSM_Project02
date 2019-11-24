@@ -32,7 +32,7 @@ public class AccountController extends BaseController{
         map.put("userFile",userFile);
         return json(map,true,"OK",0L);
     }
-
+pub;oc
     public static void main(String[] args) {
         System.out.println("sssd0sss");
     }
